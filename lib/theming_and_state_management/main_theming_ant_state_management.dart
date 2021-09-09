@@ -1,6 +1,8 @@
-import 'package:delivery_app/theming_and_state_management/presentation/splash/splash_screen.dart';
+import 'package:delivery_app/theming_and_state_management/presentation/main_binding.dart';
+import 'package:delivery_app/theming_and_state_management/presentation/routes/delivery_navigation.dart';
 import 'package:delivery_app/theming_and_state_management/presentation/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainThemingAndStateManagement extends StatelessWidget {
@@ -27,8 +29,17 @@ class MainThemingAndStateManagement extends StatelessWidget {
     final lightTheme = ThemeData(
       appBarTheme: AppBarTheme(
         color: DeliveryColors.white,
+        textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+          headline6: TextStyle(
+            fontSize: 20,
+            color: DeliveryColors.purple,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       canvasColor: DeliveryColors.white,
+      accentColor: DeliveryColors.purple,
+      bottomAppBarColor: DeliveryColors.veryLightGrey,
       textTheme: GoogleFonts.poppinsTextTheme().apply(
         bodyColor: DeliveryColors.purple,
         displayColor: DeliveryColors.purple,
@@ -57,7 +68,15 @@ class MainThemingAndStateManagement extends StatelessWidget {
     final darkTheme = ThemeData(
       appBarTheme: AppBarTheme(
         color: DeliveryColors.purple,
+        textTheme: GoogleFonts.poppinsTextTheme().copyWith(
+          headline6: TextStyle(
+            fontSize: 20,
+            color: DeliveryColors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
+      bottomAppBarColor: Colors.transparent,
       canvasColor: DeliveryColors.grey,
       scaffoldBackgroundColor: DeliveryColors.dark,
       textTheme: GoogleFonts.poppinsTextTheme().apply(
@@ -87,10 +106,12 @@ class MainThemingAndStateManagement extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: SplashScreen(),
+      initialRoute: DeliveryRoutes.splash,
+      getPages: DeliveryPages.pages,
+      initialBinding: MainBinding(),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:delivery_app/theming_and_state_management/presentation/home/products/products_screen.dart';
 import 'package:delivery_app/theming_and_state_management/presentation/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: IndexedStack(
               index: currentIndex,
               children: <Widget>[
+                ProductsScreen(),
+                Text("CurrentIndex $currentIndex"),
+                Text("CurrentIndex $currentIndex"),
+                Text("CurrentIndex $currentIndex"),
                 Text("CurrentIndex $currentIndex"),
               ],
             ),
@@ -26,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _DeliveryNavigationBar(
               index: currentIndex,
               onIndexSelected: (index) {
+                print(index);
                 setState(
                   () {
                     currentIndex = index;
@@ -54,8 +60,13 @@ class _DeliveryNavigationBar extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: DecoratedBox(
         decoration: BoxDecoration(
-            color: Theme.of(context).canvasColor,
-            borderRadius: BorderRadius.circular(25)),
+          color: Theme.of(context).canvasColor,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: Theme.of(context).bottomAppBarColor,
+            width: 2,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
@@ -63,23 +74,36 @@ class _DeliveryNavigationBar extends StatelessWidget {
             children: <Widget>[
               Material(
                 child: IconButton(
-                  icon: Icon(Icons.home),
+                  icon: Icon(
+                    Icons.home,
+                    color: index == 0
+                        ? DeliveryColors.green
+                        : DeliveryColors.lightGrey,
+                  ),
                   onPressed: () => onIndexSelected(0),
                 ),
               ),
               Material(
                 child: IconButton(
-                  icon: Icon(Icons.store),
+                  icon: Icon(
+                    Icons.store,
+                    color: index == 1
+                        ? DeliveryColors.green
+                        : DeliveryColors.lightGrey,
+                  ),
                   onPressed: () => onIndexSelected(1),
                 ),
               ),
               Material(
                 child: CircleAvatar(
                   backgroundColor: DeliveryColors.purple,
+                  radius: 23,
                   child: IconButton(
                     icon: Icon(
                       Icons.shopping_basket,
-                      color: Colors.white,
+                      color: index == 2
+                          ? DeliveryColors.green
+                          : DeliveryColors.white,
                     ),
                     onPressed: () => onIndexSelected(2),
                   ),
@@ -87,7 +111,12 @@ class _DeliveryNavigationBar extends StatelessWidget {
               ),
               Material(
                 child: IconButton(
-                  icon: Icon(Icons.favorite_border),
+                  icon: Icon(
+                    Icons.favorite_border,
+                    color: index == 3
+                        ? DeliveryColors.green
+                        : DeliveryColors.lightGrey,
+                  ),
                   onPressed: () => onIndexSelected(3),
                 ),
               ),
