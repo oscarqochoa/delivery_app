@@ -85,7 +85,12 @@ class _ItemProduct extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 5),
-                  Text("\$${product.price} USD"),
+                  Text(
+                    "\$${product.price} USD",
+                    style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                    ),
+                  ),
                 ],
               ),
             ),

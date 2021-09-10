@@ -147,14 +147,14 @@ class LoginScreen extends GetWidget<LoginController> {
               ),
             ],
           ),
-          Positioned.fill(
+          /*Positioned.fill(
             child: Container(
               color: Colors.black45,
               child: Center(
                 child: CircularProgressIndicator(),
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

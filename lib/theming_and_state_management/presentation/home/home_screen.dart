@@ -1,6 +1,9 @@
 import 'package:delivery_app/theming_and_state_management/presentation/home/products/products_screen.dart';
+import 'package:delivery_app/theming_and_state_management/presentation/home/profile/profile_screen.dart';
 import 'package:delivery_app/theming_and_state_management/presentation/theme.dart';
 import 'package:flutter/material.dart';
+
+import 'cart/cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -22,9 +25,17 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 ProductsScreen(),
                 Text("CurrentIndex $currentIndex"),
+                CartScreen(
+                  onShopping: () {
+                    setState(
+                      () {
+                        currentIndex = 0;
+                      },
+                    );
+                  },
+                ),
                 Text("CurrentIndex $currentIndex"),
-                Text("CurrentIndex $currentIndex"),
-                Text("CurrentIndex $currentIndex"),
+                ProfileScreen(),
               ],
             ),
           ),

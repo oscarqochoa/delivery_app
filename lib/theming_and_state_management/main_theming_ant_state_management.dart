@@ -78,6 +78,7 @@ class MainThemingAndStateManagement extends StatelessWidget {
       ),
       bottomAppBarColor: Colors.transparent,
       canvasColor: DeliveryColors.grey,
+      accentColor: DeliveryColors.white,
       scaffoldBackgroundColor: DeliveryColors.dark,
       textTheme: GoogleFonts.poppinsTextTheme().apply(
         bodyColor: DeliveryColors.green,
