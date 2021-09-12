@@ -1,4 +1,6 @@
+import 'package:delivery_app/theming_and_state_management/data/in_memory_products.dart';
 import 'package:delivery_app/theming_and_state_management/domain/exception/auth_exception.dart';
+import 'package:delivery_app/theming_and_state_management/domain/model/product.dart';
 import 'package:delivery_app/theming_and_state_management/domain/model/user.dart';
 import 'package:delivery_app/theming_and_state_management/domain/repository/api_repository.dart';
 import 'package:delivery_app/theming_and_state_management/domain/response/login_response.dart';
@@ -54,5 +56,11 @@ class ApiRepositoryImpl extends ApiRepositoryInterface {
   Future<void> logout(String token) async {
     print('removing token from server');
     return;
+  }
+
+  @override
+  Future<List<Product>> getProducts() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return products;
   }
 }
