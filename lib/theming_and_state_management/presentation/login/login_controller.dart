@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
+enum LoginState { loading, initial }
+
 class LoginController extends GetxController {
   final LocalRepositoryInterface localRepositoryInterface;
   final ApiRepositoryInterface apiRepositoryInterface;
@@ -18,11 +20,15 @@ class LoginController extends GetxController {
   TextEditingController usernameTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
+  var loginState = LoginState.initial.obs;
+
   Future<bool> login() async {
     final username = usernameTextController.text;
     final password = passwordTextController.text;
 
     try {
+      loginState(LoginState.loading);
+
       final loginResponse = await apiRepositoryInterface.login(
         LoginRequest(
           username: username,
@@ -35,6 +41,7 @@ class LoginController extends GetxController {
 
       return true;
     } on AuthException catch (_) {
+      loginState(LoginState.initial);
       return false;
     }
   }

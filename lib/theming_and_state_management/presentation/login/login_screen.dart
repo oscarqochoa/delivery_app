@@ -147,14 +147,18 @@ class LoginScreen extends GetWidget<LoginController> {
               ),
             ],
           ),
-          /*Positioned.fill(
-            child: Container(
-              color: Colors.black45,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
-          ),*/
+          Positioned.fill(
+            child: Obx(() {
+              return (controller.loginState.value == LoginState.loading)
+                  ? Container(
+                      color: Colors.black45,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : const SizedBox.shrink();
+            }),
+          ),
         ],
       ),
     );
